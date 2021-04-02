@@ -122,7 +122,7 @@ where
     // Imitate the behavior of '.iter()'
     #[inline(always)]
     pub(super) fn iter(&self) -> MapxIter<K, V> {
-        todo!()
+        self.db.iter()
     }
 
     pub(super) fn contains_key(&self, key: &K) -> bool {
@@ -177,7 +177,7 @@ where
 {
     type Item = (K, V);
     fn next(&mut self) -> Option<Self::Item> {
-        todo!()
+        self.iter.next()
     }
 }
 
@@ -187,7 +187,7 @@ where
     V: Clone + Eq + PartialEq + Serialize + DeserializeOwned + fmt::Debug,
 {
     fn next_back(&mut self) -> Option<Self::Item> {
-        todo!()
+        self.iter.next_back()
     }
 }
 

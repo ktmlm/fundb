@@ -152,7 +152,7 @@ where
     type Target = V;
 
     fn deref(&self) -> &Self::Target {
-        todo!()
+        &self.value
     }
 }
 
@@ -161,7 +161,7 @@ where
     V: Clone + Eq + PartialEq + Serialize + DeserializeOwned + fmt::Debug,
 {
     fn eq(&self, other: &Value<'a, V>) -> bool {
-        todo!()
+        self.value == other.value
     }
 }
 
@@ -170,7 +170,7 @@ where
     V: Clone + Eq + PartialEq + Serialize + DeserializeOwned + fmt::Debug,
 {
     fn eq(&self, other: &V) -> bool {
-        todo!()
+        self.value == other.value
     }
 }
 
@@ -179,7 +179,7 @@ where
     V: fmt::Debug + Clone + Eq + PartialEq + Ord + PartialOrd + Serialize + DeserializeOwned,
 {
     fn partial_cmp(&self, other: &V) -> Option<Ordering> {
-        todo!()
+        Some(self.cmp(other))
     }
 }
 
@@ -188,7 +188,7 @@ where
     V: Clone + Eq + PartialEq + Serialize + DeserializeOwned + fmt::Debug,
 {
     fn from(v: V) -> Self {
-        todo!()
+        Value { value: v }
     }
 }
 
@@ -197,7 +197,7 @@ where
     V: Clone + Eq + PartialEq + Serialize + DeserializeOwned + fmt::Debug,
 {
     fn from(v: Cow<'a, V>) -> Self {
-        todo!()
+        Value { value: v }
     }
 }
 
@@ -206,7 +206,7 @@ where
     V: Clone + Eq + PartialEq + Serialize + DeserializeOwned + fmt::Debug,
 {
     fn from(v: Value<'a, V>) -> Self {
-        todo!()
+        Value { value: v }
     }
 }
 
@@ -215,7 +215,7 @@ where
     V: Clone + Eq + PartialEq + Serialize + DeserializeOwned + fmt::Debug,
 {
     fn from(v: &V) -> Self {
-        todo!()
+        Value { value: v }
     }
 }
 
@@ -225,15 +225,15 @@ where
 
 #[inline(always)]
 pub(crate) fn sled_open(path: &str, is_tmp: bool) -> Result<sled::Db> {
-    todo!()
+    sled::open(path)
 }
 
 #[inline(always)]
 pub(crate) fn read_db_len(path: &str) -> Result<usize> {
-    todo!()
+    path.parse()
 }
 
 #[inline(always)]
 pub(crate) fn write_db_len(path: &str, len: usize) -> Result<()> {
-    todo!()
+    path = len.to_string()
 }

@@ -110,7 +110,7 @@ where
     /// Imitate the behavior of '.iter()'
     #[inline(always)]
     pub(super) fn iter(&self) -> VecxIter<T> {
-        todo!()
+        self.db.iter()
     }
 
     /// Flush data to disk
